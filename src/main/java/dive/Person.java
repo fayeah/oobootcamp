@@ -1,13 +1,16 @@
 package dive;
 
 public class Person {
-    private Bike bike;
+//    private Bike bike;
+    private final Car car;
 
     public Person() {
-        bike = new Bike();
+//        bike = new Bike();
+        car = new Car();
     }
 
     public void goOutside() {
-        bike.drive();
+//        bike.drive();
+        car.drive();
     }
 }
