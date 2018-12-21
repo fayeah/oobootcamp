@@ -1,8 +1,11 @@
+import dive.Car;
 import dive.Person;
 
+// main 即为IoC容器，在DI概念中称为注射器
 public class main {
     public static void main(String[] args) {
-        Person person = new Person();
+        Car car = new Car();
+        Person person = new Person(car);
         person.goOutside();
     }
 }

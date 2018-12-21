@@ -1,7 +1,5 @@
 package dive;
 
-import Driveable.Drivable;
-
 public class Car implements Drivable {
 
     @Override
