@@ -1,7 +1,6 @@
 package parkinglot;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 import org.junit.jupiter.api.Test;
@@ -27,11 +26,12 @@ class ParkingBoyTest {
     ParkingLot parkingLot1 = new ParkingLot(1);
     ParkingLot parkingLot2 = new ParkingLot(2);
 
+    ParkingBoy parkingBoy = new ParkingBoy();
+
     car1.park(parkingLot1);
-    Receipt receipt = myCar.park(parkingLot2);
+    Receipt receipt = parkingBoy.park(myCar, parkingLot2);
 
     assertNotNull(receipt);
     assertSame(myCar, parkingLot2.locateCar(receipt));
   }
-
 }
