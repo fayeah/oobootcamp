@@ -7,10 +7,10 @@ public class ParkingLot {
 
   private int availableSpaces;
 
-  private Map<Receipt, Car> carSlots;
+  private Map<Receipt, Car> carSpaces;
 
   public ParkingLot(int totalSpaces) {
-    this.carSlots = new HashMap<>();
+    this.carSpaces = new HashMap<>();
     this.availableSpaces = totalSpaces;
   }
 
@@ -18,7 +18,7 @@ public class ParkingLot {
     if (availableSpaces > 0) {
       availableSpaces--;
       Receipt receipt = new Receipt();
-      carSlots.put(receipt, car);
+      carSpaces.put(receipt, car);
       return receipt;
     } else {
       throw new ParkingSpacesAreFullException();
@@ -27,19 +27,19 @@ public class ParkingLot {
 
   public Car validateCarLeaving(Receipt receipt) {
     resetSpace();
-    if(carSlots.containsKey(receipt)) {
-      return carSlots.remove(receipt);
+    if(carSpaces.containsKey(receipt)) {
+      return carSpaces.remove(receipt);
     } else {
       throw new NoCarFoundByGivenReceiptException();
     }
   }
 
   public Car locateCar(Receipt receipt) {
-    if(carSlots.containsKey(receipt)) {
-      return carSlots.get(receipt);
-    } else {
-      throw new NoCarFoundByGivenReceiptException();
-    }
+    return carSpaces.getOrDefault(receipt, null);
+  }
+
+  public void assignToParkingBoy(ParkingBoy parkingBoy) {
+    parkingBoy.addParkingLot(this);
   }
 
   private void resetSpace() {

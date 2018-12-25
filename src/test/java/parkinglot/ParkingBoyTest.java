@@ -56,4 +56,17 @@ class ParkingBoyTest {
     assertThrows(ParkingSpacesAreFullException.class, () -> parkingBoy.park(myCar, parkingLot2));
     assertThrows(ParkingSpacesAreFullException.class, () -> parkingBoy.park(myCar, parkingLot3));
   }
+
+  @Test
+  void shouldPickCarSuccessfulByParkingBoyWhenMyCarIsInParkingLot1() {
+    Car myCar = new Car();
+    ParkingLot parkingLot1 = new ParkingLot(1);
+    ParkingBoy parkingBoy = new ParkingBoy();
+
+    parkingLot1.assignToParkingBoy(parkingBoy);
+
+    Receipt receipt = parkingBoy.park(myCar, parkingLot1);
+
+    assertSame(myCar, parkingBoy.pick(receipt));
+  }
 }
