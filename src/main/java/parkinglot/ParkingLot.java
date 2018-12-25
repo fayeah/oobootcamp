@@ -5,15 +5,12 @@ import java.util.Map;
 
 public class ParkingLot {
 
-  private int totalSpaces;
-
   private int availableSpaces;
 
   private Map<Receipt, Car> carSlots;
 
   public ParkingLot(int totalSpaces) {
     this.carSlots = new HashMap<>();
-    this.totalSpaces = totalSpaces;
     this.availableSpaces = totalSpaces;
   }
 
@@ -32,6 +29,14 @@ public class ParkingLot {
     resetSpace();
     if(carSlots.containsKey(receipt)) {
       return carSlots.remove(receipt);
+    } else {
+      throw new NoCarFoundByGivenReceiptException();
+    }
+  }
+
+  public Car locateCar(Receipt receipt) {
+    if(carSlots.containsKey(receipt)) {
+      return carSlots.get(receipt);
     } else {
       throw new NoCarFoundByGivenReceiptException();
     }
