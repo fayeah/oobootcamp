@@ -5,14 +5,19 @@ import java.util.List;
 
 public class ParkingBoy {
 
-  List<ParkingLot> parkingLots = new ArrayList<>();
+  private List<ParkingLot> parkingLots = new ArrayList<>();
 
-  public void addParkingLot(ParkingLot parkingLot) {
-    parkingLots.add(parkingLot);
+  public void addParkingLots(List<ParkingLot> parkingLots) {
+    this.parkingLots = parkingLots;
   }
 
-  public Receipt park(Car myCar, ParkingLot parkingLot1) {
-    return myCar.park(parkingLot1);
+  public Receipt park(Car myCar) {
+    for(ParkingLot parkingLot : parkingLots) {
+      if(parkingLot.isAvailable()) {
+        return myCar.park(parkingLot);
+      }
+    }
+    throw new ParkingSpacesAreFullException();
   }
 
   public Car pick(Receipt receipt) {

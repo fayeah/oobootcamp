@@ -14,6 +14,10 @@ public class ParkingLot {
     this.availableSpaces = totalSpaces;
   }
 
+  public boolean isAvailable() {
+    return availableSpaces > 0;
+  }
+
   public Receipt printReceipt(Car car) {
     if (availableSpaces > 0) {
       availableSpaces--;
@@ -36,10 +40,6 @@ public class ParkingLot {
 
   public Car locateCar(Receipt receipt) {
     return carSpaces.getOrDefault(receipt, null);
-  }
-
-  public void assignToParkingBoy(ParkingBoy parkingBoy) {
-    parkingBoy.addParkingLot(this);
   }
 
   private void resetSpace() {
