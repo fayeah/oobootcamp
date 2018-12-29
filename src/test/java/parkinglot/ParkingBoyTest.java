@@ -89,4 +89,21 @@ class ParkingBoyTest {
 
     assertSame(myCar, parkingBoy.pick(receipt));
   }
+
+  @Test
+  void shouldPickCarFailedWhenIUseSameReceiptToPickCarTwice() {
+    Car myCar = new Car();
+
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    ParkingLot parkingLot1 = new ParkingLot(1);
+    parkingLots.add(parkingLot1);
+
+    ParkingBoy parkingBoy = new ParkingBoy();
+    parkingBoy.addParkingLots(parkingLots);
+
+    Receipt receipt = parkingBoy.park(myCar);
+
+    assertSame(myCar, parkingBoy.pick(receipt));
+    assertThrows(NoCarFoundByGivenReceiptException.class, () -> parkingBoy.pick(receipt));
+  }
 }
