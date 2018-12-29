@@ -15,7 +15,7 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(5);
 
-    Receipt receipt = car.park(parkingLot);
+    Ticket receipt = car.park(parkingLot);
 
     assertNotNull(receipt);
   }
@@ -39,7 +39,7 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(1);
 
-    Receipt receipt = myCar.park(parkingLot);
+    Ticket receipt = myCar.park(parkingLot);
 
     assertSame(myCar, myCar.pick(receipt));
   }
@@ -52,7 +52,7 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(5);
 
-    Receipt receipt = myCar.park(parkingLot);
+    Ticket receipt = myCar.park(parkingLot);
     car1.park(parkingLot);
     car2.park(parkingLot);
 
@@ -65,7 +65,7 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(5);
 
-    Receipt receipt = myCar.park(parkingLot);
+    Ticket receipt = myCar.park(parkingLot);
 
     myCar.pick(receipt);
 

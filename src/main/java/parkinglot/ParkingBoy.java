@@ -11,7 +11,7 @@ public class ParkingBoy {
     this.parkingLots = parkingLots;
   }
 
-  public Receipt park(Car myCar) {
+  public Ticket park(Car myCar) {
     for(ParkingLot parkingLot : parkingLots) {
       if(parkingLot.isAvailable()) {
         return myCar.park(parkingLot);
@@ -20,7 +20,7 @@ public class ParkingBoy {
     throw new ParkingSpacesAreFullException();
   }
 
-  public Car pick(Receipt receipt) {
+  public Car pick(Ticket receipt) {
     for(ParkingLot parkingLot : parkingLots) {
       if(null != parkingLot.locateCar(receipt)) {
         return parkingLot.validateCarLeaving(receipt);

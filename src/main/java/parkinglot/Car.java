@@ -4,12 +4,12 @@ public class Car {
 
   private ParkingLot parkingLot;
 
-  public Receipt park(ParkingLot parkingLot) {
+  public Ticket park(ParkingLot parkingLot) {
     this.parkingLot = parkingLot;
     return this.parkingLot.printReceipt(this);
   }
 
-  public Car pick(Receipt receipt) {
+  public Car pick(Ticket receipt) {
     return parkingLot.validateCarLeaving(receipt);
   }
 

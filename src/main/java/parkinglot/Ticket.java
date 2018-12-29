@@ -1,4 +1,4 @@
 package parkinglot;
 
-public class Receipt {
+public class Ticket {
 }

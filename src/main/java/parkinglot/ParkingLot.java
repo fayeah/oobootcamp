@@ -7,7 +7,7 @@ public class ParkingLot {
 
   private int availableSpaces;
 
-  private Map<Receipt, Car> carSpaces;
+  private Map<Ticket, Car> carSpaces;
 
   public ParkingLot(int totalSpaces) {
     this.carSpaces = new HashMap<>();
@@ -18,10 +18,10 @@ public class ParkingLot {
     return availableSpaces > 0;
   }
 
-  public Receipt printReceipt(Car car) {
+  public Ticket printReceipt(Car car) {
     if (availableSpaces > 0) {
       availableSpaces--;
-      Receipt receipt = new Receipt();
+      Ticket receipt = new Ticket();
       carSpaces.put(receipt, car);
       return receipt;
     } else {
@@ -29,7 +29,7 @@ public class ParkingLot {
     }
   }
 
-  public Car validateCarLeaving(Receipt receipt) {
+  public Car validateCarLeaving(Ticket receipt) {
     resetSpace();
     if(carSpaces.containsKey(receipt)) {
       return carSpaces.remove(receipt);
@@ -38,7 +38,7 @@ public class ParkingLot {
     }
   }
 
-  public Car locateCar(Receipt receipt) {
+  public Car locateCar(Ticket receipt) {
     return carSpaces.getOrDefault(receipt, null);
   }
 

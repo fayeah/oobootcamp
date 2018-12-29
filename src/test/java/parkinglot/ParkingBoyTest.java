@@ -20,7 +20,7 @@ class ParkingBoyTest {
     ParkingBoy parkingBoy = new ParkingBoy();
     parkingBoy.addParkingLots(parkingLots);
 
-    Receipt receipt = parkingBoy.park(myCar);
+    Ticket receipt = parkingBoy.park(myCar);
 
     assertNotNull(receipt);
     assertSame(myCar, parkingLot1.locateCar(receipt));
@@ -41,7 +41,7 @@ class ParkingBoyTest {
     parkingBoy.addParkingLots(parkingLots);
 
     car1.park(parkingLot1);
-    Receipt receipt = parkingBoy.park(myCar);
+    Ticket receipt = parkingBoy.park(myCar);
 
     assertNotNull(receipt);
     assertSame(myCar, parkingLot2.locateCar(receipt));
@@ -85,7 +85,7 @@ class ParkingBoyTest {
     ParkingBoy parkingBoy = new ParkingBoy();
     parkingBoy.addParkingLots(parkingLots);
 
-    Receipt receipt = parkingBoy.park(myCar);
+    Ticket receipt = parkingBoy.park(myCar);
 
     assertSame(myCar, parkingBoy.pick(receipt));
   }
@@ -101,7 +101,7 @@ class ParkingBoyTest {
     ParkingBoy parkingBoy = new ParkingBoy();
     parkingBoy.addParkingLots(parkingLots);
 
-    Receipt receipt = parkingBoy.park(myCar);
+    Ticket receipt = parkingBoy.park(myCar);
 
     assertSame(myCar, parkingBoy.pick(receipt));
     assertThrows(NoCarFoundByGivenReceiptException.class, () -> parkingBoy.pick(receipt));
