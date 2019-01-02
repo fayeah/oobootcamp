@@ -7,8 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class SquareTest {
 
     @Test
-    void shouldReturn4() {
-        assertEquals(4, 4);
+    void shouldReturn4WhenWidth1Length2() {
+        assertEquals(2, new Rectangle(1, 2).getArea());
     }
 
+    @Test
+    void shouldReturn4GivenWidth2Length2() {
+        assertEquals(4, new Square(2).getArea());
+    }
 }
