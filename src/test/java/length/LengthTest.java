@@ -25,4 +25,20 @@ public class LengthTest {
 
         assertEquals(1, lengthComparator.compare(length, target));
     }
+
+    @Test
+    void shouldReturn0WhenInput1000MTarget1Km() {
+        LengthComparator lengthComparator = new LengthComparator();
+        Length length = new Length(1000, Unit.METER);
+        Length target = new Length(1, Unit.KILOMETER);
+        assertEquals(0, lengthComparator.compare(length, target));
+    }
+
+    @Test
+    void shouldReturnMinus1GivenInputIs100MeterTargetIs1Km() {
+        LengthComparator lengthComparator = new LengthComparator();
+        Length length = new Length(100, Unit.METER);
+        Length target = new Length(100, Unit.KILOMETER);
+        assertEquals(-1, lengthComparator.compare(length, target));
+    }
 }

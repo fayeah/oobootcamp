@@ -1,4 +1,4 @@
-package dive;
+package drive;
 
 public class Car implements Drivable {
 

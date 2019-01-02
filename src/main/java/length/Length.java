@@ -9,7 +9,7 @@ public class Length {
         this.unit = unit;
     }
 
-    public double getMeterValue() {
+    public double getValue() {
         return value * unit.getMultiple();
     }
 }
