@@ -10,10 +10,6 @@ public class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public void addParkingLot(ParkingLot parkingLot) {
-        parkingLots.add(parkingLot);
-    }
-
     public Receipt park(Car car) {
         Receipt receipt = new Receipt();
         for(int i = 0; i < parkingLots.size(); i++) {
@@ -28,14 +24,5 @@ public class ParkingBoy {
 //            }
 //        });
         throw new ParkingSpacesAreFullException();
-    }
-
-    public Car pick(Receipt receipt) {
-        for (ParkingLot parkingLot : parkingLots) {
-            if (null != parkingLot.locateCar(receipt)) {
-                return parkingLot.validateCarLeaving(receipt);
-            }
-        }
-        throw new NoCarFoundByGivenReceiptException();
     }
 }
