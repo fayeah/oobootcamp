@@ -5,6 +5,10 @@ import java.util.Map;
 
 public class ParkingLot {
 
+    public int getAvailableSpaces() {
+        return availableSpaces;
+    }
+
     private int availableSpaces;
 
     private Map<Receipt, Car> carSpaces = new HashMap<>();
