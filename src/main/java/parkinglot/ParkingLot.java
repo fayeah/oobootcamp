@@ -5,44 +5,62 @@ import java.util.Map;
 
 public class ParkingLot {
 
-  private int availableSpaces;
+    private int availableSpaces;
 
-  private Map<Ticket, Car> carSpaces;
+    private Map<Receipt, Car> carSpaces = new HashMap<>();
 
-  public ParkingLot(int totalSpaces) {
-    this.carSpaces = new HashMap<>();
-    this.availableSpaces = totalSpaces;
-  }
-
-  public boolean isAvailable() {
-    return availableSpaces > 0;
-  }
-
-  public Ticket printReceipt(Car car) {
-    if (availableSpaces > 0) {
-      availableSpaces--;
-      Ticket receipt = new Ticket();
-      carSpaces.put(receipt, car);
-      return receipt;
-    } else {
-      throw new ParkingSpacesAreFullException();
+    public ParkingLot(int totalSpaces) {
+        this.availableSpaces = totalSpaces;
     }
-  }
 
-  public Car validateCarLeaving(Ticket receipt) {
-    resetSpace();
-    if(carSpaces.containsKey(receipt)) {
-      return carSpaces.remove(receipt);
-    } else {
-      throw new NoCarFoundByGivenReceiptException();
+    public Receipt printReceipt(Car car) {
+        if (availableSpaces > 0) {
+            availableSpaces--;
+            Receipt receipt = new Receipt();
+            carSpaces.put(receipt, car);
+            return receipt;
+        } else {
+            throw new ParkingSpacesAreFullException();
+        }
     }
-  }
 
-  public Car locateCar(Ticket receipt) {
-    return carSpaces.getOrDefault(receipt, null);
-  }
+    public Car validateCarLeaving(Receipt receipt) {
+        resetSpace();
+        if (carSpaces.containsKey(receipt)) {
+            return carSpaces.remove(receipt);
+        } else {
+            throw new NoCarFoundByGivenReceiptException();
+        }
+    }
 
-  private void resetSpace() {
-    availableSpaces++;
-  }
+    public Car locateCar(Receipt receipt) {
+        return carSpaces.getOrDefault(receipt, null);
+    }
+
+    public void assignToParkingBoy(ParkingBoy parkingBoy) {
+        parkingBoy.addParkingLot(this);
+    }
+
+    private void resetSpace() {
+        availableSpaces++;
+    }
+
+    public Receipt park(Car car) {
+        if (availableSpaces > 0) {
+            availableSpaces -= 1;
+            Receipt receipt = new Receipt();
+            carSpaces.put(receipt, car);
+            return receipt;
+        } else {
+            throw new ParkingSpacesAreFullException();
+        }
+    }
+
+    public Car pick(Receipt receipt) {
+        if (carSpaces.containsKey(receipt)) {
+            return carSpaces.remove(receipt);
+        } else {
+            throw new NoCarFoundByGivenReceiptException();
+        }
+    }
 }

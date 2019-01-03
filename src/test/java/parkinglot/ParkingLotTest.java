@@ -3,7 +3,6 @@ package parkinglot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -15,7 +14,7 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(5);
 
-    Ticket receipt = car.park(parkingLot);
+    Receipt receipt = parkingLot.park(car);
 
     assertNotNull(receipt);
   }
@@ -26,11 +25,11 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(1);
 
-    car.park(parkingLot);
+    parkingLot.park(car);
 
     Car myCar = new Car();
 
-    assertThrows(ParkingSpacesAreFullException.class, () -> myCar.park(parkingLot));
+    assertThrows(ParkingSpacesAreFullException.class, () -> parkingLot.park(myCar));
   }
 
   @Test
@@ -39,9 +38,9 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(1);
 
-    Ticket receipt = myCar.park(parkingLot);
+    Receipt receipt = parkingLot.park(myCar);
 
-    assertSame(myCar, myCar.pick(receipt));
+    assertSame(myCar, parkingLot.pick(receipt));
   }
 
   @Test
@@ -52,11 +51,11 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(5);
 
-    Ticket receipt = myCar.park(parkingLot);
-    car1.park(parkingLot);
-    car2.park(parkingLot);
+    Receipt receipt = parkingLot.park(myCar);
+    parkingLot.park(car1);
+    parkingLot.park(car2);
 
-    assertSame(myCar, myCar.pick(receipt));
+    assertSame(myCar, parkingLot.pick(receipt));
   }
 
   @Test
@@ -65,10 +64,21 @@ public class ParkingLotTest {
 
     ParkingLot parkingLot = new ParkingLot(5);
 
-    Ticket receipt = myCar.park(parkingLot);
+    Receipt receipt = parkingLot.park(myCar);
 
-    myCar.pick(receipt);
+    parkingLot.pick(receipt);
 
-    assertThrows(NoCarFoundByGivenReceiptException.class, () -> myCar.pick(receipt));
+    assertThrows(NoCarFoundByGivenReceiptException.class, () -> parkingLot.pick(receipt));
+  }
+
+  @Test
+  void shouldPickCarFailedWhenInvalidReceiptIsUsed() {
+    Car myCar = new Car();
+
+    ParkingLot parkingLot = new ParkingLot(5);
+
+    parkingLot.park(myCar);
+
+    assertThrows(NoCarFoundByGivenReceiptException.class, () -> parkingLot.pick(new Receipt()));
   }
 }
