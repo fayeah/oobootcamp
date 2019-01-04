@@ -80,7 +80,7 @@ public class SmartParkingBoyTest {
     }
 
     @Test
-    void shouldParkFailedWhenBothParkinglotHaveTheSameAvailableSpaces() {
+    void shouldParkAtParkinglot1WhenBothParkinglotHaveTheSameAvailableSpaces() {
         Car myCar = new Car();
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
@@ -96,4 +96,38 @@ public class SmartParkingBoyTest {
         assertSame(myCar, parkingLot1.pick(receipt));
     }
 
+    @Test
+    void shouldPickSuccessfullyWhenPickCarGivenValidReceipt() {
+        Car myCar = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Receipt receipt = smartParkingBoy.park(myCar);
+
+        Car pickedCar = smartParkingBoy.pick(receipt);
+
+        assertSame(myCar,pickedCar);
+
+    }
+
+    @Test
+    void shouldPickFailedWhenPickCarGivenInvalidReceipt() {
+        Car myCar = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        smartParkingBoy.park(myCar);
+
+        assertThrows(NoCarFoundByGivenReceiptException.class, () -> smartParkingBoy.pick(new Receipt()));
+    }
 }

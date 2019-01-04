@@ -16,4 +16,13 @@ public class SmartParkingBoy {
         ParkingLot parkingLotWithMostAvailableSpaces = Collections.max(parkingLots, Comparator.comparing(s -> s.getAvailableSpaces()));
         return parkingLotWithMostAvailableSpaces.park(car);
     }
+
+    public Car pick(Receipt receipt) {
+        for(ParkingLot parkingLot : parkingLots){
+            if(parkingLot.contains(receipt)){
+                return parkingLot.pick(receipt);
+            }
+        }
+        throw new NoCarFoundByGivenReceiptException();
+    }
 }

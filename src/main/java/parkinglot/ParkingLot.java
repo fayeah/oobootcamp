@@ -23,16 +23,18 @@ public class ParkingLot {
             Receipt receipt = new Receipt();
             carSpaces.put(receipt, car);
             return receipt;
-        } else {
-            throw new ParkingSpacesAreFullException();
         }
+        throw new ParkingSpacesAreFullException();
     }
 
     public Car pick(Receipt receipt) {
-        if (carSpaces.containsKey(receipt)) {
+        if (contains(receipt)) {
             return carSpaces.remove(receipt);
-        } else {
-            throw new NoCarFoundByGivenReceiptException();
         }
+        throw new NoCarFoundByGivenReceiptException();
+    }
+
+    public boolean contains(Receipt receipt) {
+        return carSpaces.containsKey(receipt);
     }
 }
