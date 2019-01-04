@@ -13,8 +13,8 @@ public abstract class BaseParkingBoy {
     abstract Receipt park(Car car);
 
     public Car pick(Receipt receipt) {
-        for(ParkingLot parkingLot : parkingLots){
-            if(parkingLot.contains(receipt)){
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.contains(receipt)) {
                 return parkingLot.pick(receipt);
             }
         }

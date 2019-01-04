@@ -88,7 +88,7 @@ Then: 取车失败
 
 parkingManager tasks:
 
-Given: 停车小弟都没有报道，parking manager管理一个停车场
+Given: 停车小弟都没有报道，parking manager管理一个停车场，这个停车场有空位
 When: 需要停车  
 Then: 停车成功
 
