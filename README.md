@@ -88,54 +88,67 @@ Then: 取车失败
 
 parkingManager tasks:
 
+1.
 Given: 停车小弟都没有报道，parking manager管理一个停车场，这个停车场有空位
 When: 需要停车  
 Then: 停车成功
 
+2.
 Given: 停车小弟都没有报道，parking manager管理两个停车场，都有空位
 When: 需要停车  
 Then: 停车成功，且停在第一个停车场
 
+3.
 Given: formal停车小弟报道，管理1个停车场，且有空位  
 When: 需要停车  
 Then: 停车成功，且停在该停车场  
 
+4.
 Given: formal停车小弟报道，管理1个停车场A，manager管理1个停车场B，且A满了，B有空位  
 When: 需要停车  
 Then: 停车成功，且停在停车场B
 
+5.
 Given: smart停车小弟报道，管理1个停车场，且有空位  
 When: 需要停车  
 Then: 停车成功，且停在该停车场  
 
+6.
 Given: formal停车小弟和smart停车小弟依次报道，formal管理停车场A，smart管理停车场B，且都有空位  
 When: 需要停车  
 Then: 停车成功，且停在停车场A
 
+7.
 Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A，smart管理停车场B，且都有空位  
 When: 需要停车  
 Then: 停车成功，且停在停车场B  
 
+8.
 Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，且都有空位  
 When: 需要停车  
 Then: 停车成功，且停在停车场C、D里空位最多的那一个  
 
+9.
 Given: formal停车小弟和smart停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，且都有空位  
 When: 需要停车  
 Then: 停车成功，且停在停车场A
 
+10.
 Given: formal停车小弟和smart停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，且只有C、D有空位  
 When: 需要停车  
 Then: 停车成功，且停在停车场C、D里空位最多的那一个  
 
+11.
 Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，且只有A、B有空位  
 When: 需要停车  
 Then: 停车成功，且停在停车场A  
 
+12.
 Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，manager管理E，A、B、C、D都满，E有空位  
 When: 需要停车  
 Then: 停车成功，且停在E  
 
+13.
 Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，manager管理E，A、B、C、D、E都满  
 When: 需要停车  
 Then: 停车失败

@@ -98,4 +98,30 @@ public class ParkingManagerTest {
         assertNotNull(receipt);
         assertSame(car, parkingLot1.pick(receipt));
     }
+
+    @Test
+    void shouldParkAtParkingBoyLotWhenParkingGivenParkingBoyComeFirstAndSmartParkingBoyLate() {
+        Car car = new Car();
+        ParkingLot parkingLot1= new ParkingLot(1);
+        ParkingLot parkingLot2= new ParkingLot(1);
+
+        List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
+        parkingBoyParkingLots.add(parkingLot1);
+
+
+        List<ParkingLot> smartParkingBoyParkingLots = new ArrayList<>();
+        smartParkingBoyParkingLots.add(parkingLot2);
+
+        ParkingManager parkingManager = new ParkingManager();
+        BaseParkingBoy parkingBoy = new ParkingBoy(parkingBoyParkingLots);
+        BaseParkingBoy smartParkingBoy = new SmartParkingBoy(smartParkingBoyParkingLots);
+
+        parkingManager.manage(parkingBoy);
+        parkingManager.manage(smartParkingBoy);
+
+        Receipt receipt = parkingManager.assignParkingCarTaskToParkingBoy(car);
+
+        assertNotNull(receipt);
+        assertSame(car, parkingLot1.pick(receipt));
+    }
 }

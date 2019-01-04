@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingManager extends ParkingBoy {
-    private BaseParkingBoy parkingBoy;
+    private List<BaseParkingBoy> parkingBoyList = new ArrayList<>();
 
     public ParkingManager(List<ParkingLot> parkingLots) {
         super(parkingLots);
@@ -15,12 +15,14 @@ public class ParkingManager extends ParkingBoy {
     }
 
     void manage(BaseParkingBoy parkingBoy) {
-        this.parkingBoy = parkingBoy;
+        parkingBoyList.add(parkingBoy);
     }
 
     Receipt assignParkingCarTaskToParkingBoy(Car car) {
-        if (parkingBoy.hasAvailableSpace()) {
-            return parkingBoy.park(car);
+        for (BaseParkingBoy parkingBoy : parkingBoyList) {
+            if (parkingBoy.hasAvailableSpace()) {
+                return parkingBoy.park(car);
+            }
         }
         return this.park(car);
     }
