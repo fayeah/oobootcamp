@@ -7,6 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ParkingManagerTest {
 
@@ -184,5 +185,40 @@ public class ParkingManagerTest {
 
         assertNotNull(receipt);
         assertSame(car, parkingLot3.pick(receipt));
+    }
+
+    @Test
+    void shouldParkFailedWhenParkingGivenAllParkingLotsAreFull() {
+        Car car = new Car();
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+
+        ParkingLot parkingLot1= new ParkingLot(1);
+        ParkingLot parkingLot2= new ParkingLot(1);
+        ParkingLot parkingLot3= new ParkingLot(1);
+
+        List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
+        parkingBoyParkingLots.add(parkingLot1);
+
+        List<ParkingLot> smartParkingBoyParkingLots = new ArrayList<>();
+        smartParkingBoyParkingLots.add(parkingLot2);
+
+        List<ParkingLot> managerParkingLots = new ArrayList<>();
+        managerParkingLots.add(parkingLot3);
+
+
+        ParkingManager parkingManager = new ParkingManager(managerParkingLots);
+        BaseParkingBoy smartParkingBoy = new SmartParkingBoy(smartParkingBoyParkingLots);
+        BaseParkingBoy parkingBoy = new ParkingBoy(parkingBoyParkingLots);
+
+        parkingManager.manage(smartParkingBoy);
+        parkingManager.manage(parkingBoy);
+
+        parkingManager.assignParkingCarTaskToParkingBoy(car1);
+        parkingManager.assignParkingCarTaskToParkingBoy(car2);
+        parkingManager.assignParkingCarTaskToParkingBoy(car3);
+
+        assertThrows(ParkingSpacesAreFullException.class, () -> parkingManager.assignParkingCarTaskToParkingBoy(car));
     }
 }
