@@ -4,12 +4,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class SmartParkingBoy {
-
-    private List<ParkingLot> parkingLots;
+public class SmartParkingBoy extends BaseParkingBoy{
 
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super(parkingLots);
     }
 
     public Receipt park(Car car) {
@@ -17,12 +15,4 @@ public class SmartParkingBoy {
         return parkingLotWithMostAvailableSpaces.park(car);
     }
 
-    public Car pick(Receipt receipt) {
-        for(ParkingLot parkingLot : parkingLots){
-            if(parkingLot.contains(receipt)){
-                return parkingLot.pick(receipt);
-            }
-        }
-        throw new NoCarFoundByGivenReceiptException();
-    }
 }

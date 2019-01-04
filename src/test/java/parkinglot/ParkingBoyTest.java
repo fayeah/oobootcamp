@@ -77,4 +77,33 @@ class ParkingBoyTest {
 
         assertThrows(ParkingSpacesAreFullException.class, () -> parkingBoy.park(myCar));
     }
+
+    @Test
+    void shouldPickSuccessfullyWhenPickCarGivenValidTicket() {
+        Car myCar = new Car();
+
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Receipt receipt = parkingBoy.park(myCar);
+
+        assertNotNull(receipt);
+        assertSame(myCar, parkingBoy.pick(receipt));
+    }
+
+    @Test
+    void shouldPickFailedWhenPickCarGivenInvalidReceipt() {
+        Car myCar = new Car();
+
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.park(myCar);
+
+        assertThrows(NoCarFoundByGivenReceiptException.class, () -> parkingBoy.pick(new Receipt()));
+    }
 }
