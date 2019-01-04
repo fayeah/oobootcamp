@@ -124,31 +124,11 @@ When: 需要停车
 Then: 停车成功，且停在停车场B  
 
 8.
-Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，且都有空位  
-When: 需要停车  
-Then: 停车成功，且停在停车场C、D里空位最多的那一个  
-
-9.
-Given: formal停车小弟和smart停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，且都有空位  
-When: 需要停车  
-Then: 停车成功，且停在停车场A
-
-10.
-Given: formal停车小弟和smart停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，且只有C、D有空位  
-When: 需要停车  
-Then: 停车成功，且停在停车场C、D里空位最多的那一个  
-
-11.
-Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，且只有A、B有空位  
-When: 需要停车  
-Then: 停车成功，且停在停车场A  
-
-12.
 Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，manager管理E，A、B、C、D都满，E有空位  
 When: 需要停车  
 Then: 停车成功，且停在E  
 
-13.
+9.
 Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，manager管理E，A、B、C、D、E都满  
 When: 需要停车  
 Then: 停车失败
