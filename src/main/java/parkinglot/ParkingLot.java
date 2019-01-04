@@ -37,4 +37,8 @@ public class ParkingLot {
     public boolean contains(Receipt receipt) {
         return carSpaces.containsKey(receipt);
     }
+
+    public boolean hasAvailableSpace() {
+        return availableSpaces > 0;
+    }
 }

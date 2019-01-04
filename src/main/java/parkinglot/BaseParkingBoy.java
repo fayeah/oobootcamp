@@ -20,4 +20,13 @@ public abstract class BaseParkingBoy {
         }
         throw new NoCarFoundByGivenReceiptException();
     }
+
+    protected boolean hasAvailableSpace() {
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.hasAvailableSpace()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
