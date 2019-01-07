@@ -50,7 +50,7 @@ public class ParkingManagerTest {
 
         parkingManager.manage(parkingBoy);
 
-        Receipt receipt = parkingManager.assignParkingCarTaskToParkingBoy(car);
+        Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
         assertSame(car, parkingLot.pick(receipt));
@@ -72,9 +72,9 @@ public class ParkingManagerTest {
         BaseParkingBoy parkingBoy = new ParkingBoy(parkingBoyParkingLots);
 
         parkingManager.manage(parkingBoy);
-        parkingManager.assignParkingCarTaskToParkingBoy(car);
+        parkingManager.park(car);
 
-        Receipt receipt = parkingManager.assignParkingCarTaskToParkingBoy(myCar);
+        Receipt receipt = parkingManager.park(myCar);
 
         assertNotNull(receipt);
         assertSame(myCar, parkingLot2.pick(receipt));
@@ -94,7 +94,7 @@ public class ParkingManagerTest {
 
         parkingManager.manage(smartParkingBoy);
 
-        Receipt receipt = parkingManager.assignParkingCarTaskToParkingBoy(car);
+        Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
         assertSame(car, parkingLot1.pick(receipt));
@@ -120,7 +120,7 @@ public class ParkingManagerTest {
         parkingManager.manage(parkingBoy);
         parkingManager.manage(smartParkingBoy);
 
-        Receipt receipt = parkingManager.assignParkingCarTaskToParkingBoy(car);
+        Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
         assertSame(car, parkingLot1.pick(receipt));
@@ -145,7 +145,7 @@ public class ParkingManagerTest {
         parkingManager.manage(smartParkingBoy);
         parkingManager.manage(parkingBoy);
 
-        Receipt receipt = parkingManager.assignParkingCarTaskToParkingBoy(car);
+        Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
         assertSame(car, parkingLot2.pick(receipt));
@@ -178,10 +178,10 @@ public class ParkingManagerTest {
         parkingManager.manage(smartParkingBoy);
         parkingManager.manage(parkingBoy);
 
-        parkingManager.assignParkingCarTaskToParkingBoy(car1);
-        parkingManager.assignParkingCarTaskToParkingBoy(car2);
+        parkingManager.park(car1);
+        parkingManager.park(car2);
 
-        Receipt receipt = parkingManager.assignParkingCarTaskToParkingBoy(car);
+        Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
         assertSame(car, parkingLot3.pick(receipt));
@@ -215,10 +215,10 @@ public class ParkingManagerTest {
         parkingManager.manage(smartParkingBoy);
         parkingManager.manage(parkingBoy);
 
-        parkingManager.assignParkingCarTaskToParkingBoy(car1);
-        parkingManager.assignParkingCarTaskToParkingBoy(car2);
-        parkingManager.assignParkingCarTaskToParkingBoy(car3);
+        parkingManager.park(car1);
+        parkingManager.park(car2);
+        parkingManager.park(car3);
 
-        assertThrows(ParkingSpacesAreFullException.class, () -> parkingManager.assignParkingCarTaskToParkingBoy(car));
+        assertThrows(ParkingSpacesAreFullException.class, () -> parkingManager.park(car));
     }
 }

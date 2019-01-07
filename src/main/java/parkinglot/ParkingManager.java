@@ -18,12 +18,12 @@ public class ParkingManager extends ParkingBoy {
         parkingBoyList.add(parkingBoy);
     }
 
-    Receipt assignParkingCarTaskToParkingBoy(Car car) {
+    public Receipt park(Car car) {
         for (BaseParkingBoy parkingBoy : parkingBoyList) {
             if (parkingBoy.hasAvailableSpace()) {
                 return parkingBoy.park(car);
             }
         }
-        return this.park(car);
+        return super.park(car);
     }
 }
