@@ -21,6 +21,15 @@ public abstract class BaseParkingBoy {
         throw new NoCarFoundByGivenReceiptException();
     }
 
+    protected  boolean contains(Receipt receipt){
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.contains(receipt)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected boolean hasAvailableSpace() {
         for (ParkingLot parkingLot : parkingLots) {
             if (parkingLot.hasAvailableSpace()) {

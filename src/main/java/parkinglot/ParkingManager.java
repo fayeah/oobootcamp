@@ -18,6 +18,15 @@ public class ParkingManager extends ParkingBoy {
         parkingBoyList.add(parkingBoy);
     }
 
+    public Car pick(Receipt receipt) {
+        for (BaseParkingBoy parkingBoy : parkingBoyList) {
+            if (parkingBoy.contains(receipt)) {
+                return parkingBoy.pick(receipt);
+            }
+        }
+        return super.pick(receipt);
+    }
+
     public Receipt park(Car car) {
         for (BaseParkingBoy parkingBoy : parkingBoyList) {
             if (parkingBoy.hasAvailableSpace()) {

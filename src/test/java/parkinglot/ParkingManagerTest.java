@@ -221,4 +221,42 @@ public class ParkingManagerTest {
 
         assertThrows(ParkingSpacesAreFullException.class, () -> parkingManager.park(car));
     }
+
+    @Test
+    void shouldPickSuccessfullyGivenValidReceipt() {
+        Car myCar = new Car();
+        List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        parkingBoyParkingLots.add(parkingLot1);
+
+        BaseParkingBoy parkingManager = new ParkingManager(parkingBoyParkingLots);
+
+        Receipt receipt = parkingManager.park(myCar);
+
+        assertSame(myCar, parkingManager.pick(receipt));
+    }
+
+    @Test
+    void shouldPickSuccessfullyGivenParkingBoyHasValidParkingLot() {
+        Car myCar = new Car();
+        List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        parkingBoyParkingLots.add(parkingLot1);
+
+        BaseParkingBoy parkingManager = new ParkingManager();
+        BaseParkingBoy parkingBoy = new ParkingBoy(parkingBoyParkingLots);
+
+        ((ParkingManager) parkingManager).manage(parkingBoy);
+
+        Receipt receipt = parkingManager.park(myCar);
+
+        assertSame(myCar, parkingManager.pick(receipt));
+    }
+
+    @Test
+    void shouldPickFailedGivenInvalidReceipt() {
+        BaseParkingBoy parkingManager = new ParkingManager();
+
+        assertThrows(NoCarFoundByGivenReceiptException.class, () -> parkingManager.pick(new Receipt()));
+    }
 }
