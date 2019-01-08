@@ -1,6 +1,7 @@
 package parkinglot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ParkingManager extends ParkingBoy {
@@ -28,6 +29,7 @@ public class ParkingManager extends ParkingBoy {
     }
 
     public Receipt park(Car car) {
+        Collections.shuffle(parkingBoyList);
         for (BaseParkingBoy parkingBoy : parkingBoyList) {
             if (parkingBoy.hasAvailableSpace()) {
                 return parkingBoy.park(car);

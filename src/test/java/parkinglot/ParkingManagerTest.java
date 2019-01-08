@@ -14,7 +14,7 @@ public class ParkingManagerTest {
     @Test
     void shouldParkSuccessfullyWhenParkingManagerParkCarGivenNoParkingBoyAndManageOneParkingLot() {
         Car car = new Car();
-        ParkingLot parkingLot= new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot(1);
 
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
@@ -26,8 +26,8 @@ public class ParkingManagerTest {
     @Test
     void shouldParkSuccessfullyWhenParkingManagerParkCarGivenNoParkingBoyAndManageTwoParkingLots() {
         Car car = new Car();
-        ParkingLot parkingLot1= new ParkingLot(1);
-        ParkingLot parkingLot2= new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
 
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot1);
@@ -40,7 +40,7 @@ public class ParkingManagerTest {
     @Test
     void shouldParkSuccessfullyWhenParkingBoyParkCarGivenOneParkingBoy() {
         Car car = new Car();
-        ParkingLot parkingLot= new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot(1);
 
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
@@ -60,8 +60,8 @@ public class ParkingManagerTest {
     void shouldParkAtManagerParkingLotWhenParkingGivenParkingboyParkinglotIsFull() {
         Car myCar = new Car();
         Car car = new Car();
-        ParkingLot parkingLot1= new ParkingLot(1);
-        ParkingLot parkingLot2= new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
 
         List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
         parkingBoyParkingLots.add(parkingLot1);
@@ -84,7 +84,7 @@ public class ParkingManagerTest {
     @Test
     void shouldParkAtSmartParkingLotWhenParkingGivenSmartParkingBoy() {
         Car car = new Car();
-        ParkingLot parkingLot1= new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
 
         List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
         parkingBoyParkingLots.add(parkingLot1);
@@ -103,8 +103,8 @@ public class ParkingManagerTest {
     @Test
     void shouldParkAtParkingBoyLotWhenParkingGivenParkingBoyComeFirstAndSmartParkingBoyLate() {
         Car car = new Car();
-        ParkingLot parkingLot1= new ParkingLot(1);
-        ParkingLot parkingLot2= new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
 
         List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
         parkingBoyParkingLots.add(parkingLot1);
@@ -129,8 +129,8 @@ public class ParkingManagerTest {
     @Test
     void shouldParkAtSmartParkingBoyLotWhenParkingGivenSmartParkingBoyComeFirstAndParkingBoyLate() {
         Car car = new Car();
-        ParkingLot parkingLot1= new ParkingLot(1);
-        ParkingLot parkingLot2= new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
 
         List<ParkingLot> smartParkingBoyParkingLots = new ArrayList<>();
         smartParkingBoyParkingLots.add(parkingLot2);
@@ -157,9 +157,9 @@ public class ParkingManagerTest {
         Car car1 = new Car();
         Car car2 = new Car();
 
-        ParkingLot parkingLot1= new ParkingLot(1);
-        ParkingLot parkingLot2= new ParkingLot(1);
-        ParkingLot parkingLot3= new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingLot parkingLot3 = new ParkingLot(1);
 
         List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
         parkingBoyParkingLots.add(parkingLot1);
@@ -194,9 +194,9 @@ public class ParkingManagerTest {
         Car car2 = new Car();
         Car car3 = new Car();
 
-        ParkingLot parkingLot1= new ParkingLot(1);
-        ParkingLot parkingLot2= new ParkingLot(1);
-        ParkingLot parkingLot3= new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingLot parkingLot3 = new ParkingLot(1);
 
         List<ParkingLot> parkingBoyParkingLots = new ArrayList<>();
         parkingBoyParkingLots.add(parkingLot1);
