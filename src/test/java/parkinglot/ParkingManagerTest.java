@@ -53,7 +53,7 @@ public class ParkingManagerTest {
         Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
-        assertSame(car, parkingLot.pick(receipt));
+        assertSame(car, parkingManager.pick(receipt));
     }
 
     @Test
@@ -77,7 +77,7 @@ public class ParkingManagerTest {
         Receipt receipt = parkingManager.park(myCar);
 
         assertNotNull(receipt);
-        assertSame(myCar, parkingLot2.pick(receipt));
+        assertSame(myCar, parkingManager.pick(receipt));
     }
 
 
@@ -97,7 +97,7 @@ public class ParkingManagerTest {
         Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
-        assertSame(car, parkingLot1.pick(receipt));
+        assertSame(car, parkingManager.pick(receipt));
     }
 
     @Test
@@ -123,7 +123,7 @@ public class ParkingManagerTest {
         Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
-        assertSame(car, parkingLot1.pick(receipt));
+        assertSame(car, parkingManager.pick(receipt));
     }
 
     @Test
@@ -148,7 +148,7 @@ public class ParkingManagerTest {
         Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
-        assertSame(car, parkingLot2.pick(receipt));
+        assertSame(car, parkingManager.pick(receipt));
     }
 
     @Test
@@ -184,7 +184,7 @@ public class ParkingManagerTest {
         Receipt receipt = parkingManager.park(car);
 
         assertNotNull(receipt);
-        assertSame(car, parkingLot3.pick(receipt));
+        assertSame(car, parkingManager.pick(receipt));
     }
 
     @Test
