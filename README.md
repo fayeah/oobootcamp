@@ -132,4 +132,7 @@ Then: 停车成功，且停在E
 Given: smart停车小弟和formal停车小弟依次报道，formal管理停车场A、B，smart管理停车场C、D，manager管理E，A、B、C、D、E都满  
 When: 需要停车  
 Then: 停车失败
+
+replaceRecordWithDataClass
+
   
